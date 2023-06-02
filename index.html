@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/feather-icons"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,21 +25,52 @@
 
     <div class="moreTools" id="moreTools">
         <div class="boxik">
-            <input type="checkbox" onclick="earser()">Earser</input>
-            <input type="checkbox" id="rainbow" onclick="rainbow()">Rainbow color</input><br><br>
-            <label for="widthInput">width:</label>
-            <input type="number" id="widthInput"><br>
-            <label for="heightInput">height:</label>
-            <input type="number" id="heightInput"><br>
-            <button onclick="changeCanvasSize()" style="margin-top: 5px;">Change canvas resolution</button><br><br>
-            <button onclick="saveAsik()">Save</button>
-            <h4 style="text-align: center;">Load Save</h4>
-            <input type="file" id="filos"><br>
-            <h4 style="text-align: center;">Load Image</h4>
-            <input type="file" id="obrazkos"><br><br><br>
-            <button onclick="nevimjakpojemnovat()">Export PNG</button><br><br>
-            <button onclick="openFilters()">Filters</button><br>
-            <button onclick="addText()">Add text</button>
+            <div class="container">
+
+                <div class="col">
+                    <input class="form-check-input" type="checkbox" onclick="earser()">Earser</input>
+                </div>
+                <div class="col">
+                    <input class="form-check-input" type="checkbox" id="rainbow" onclick="rainbow()">Rainbow
+                    color</input>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <label for="widthInput">width:</label>
+                <input class="form-control form-control-sm m-1" type="number" id="widthInput">
+            </div>
+
+            <div class="container">
+                <label for="heightInput">height:</label>
+                <input class="form-control form-control-sm m-1" type="number" id="heightInput">
+                <button class="btn btn-outline-warning mt-2" onclick="changeCanvasSize()">Change canvas
+                    resolution</button>
+            </div>
+
+            <div class="container mt-5">
+                <div class="col mt-2">
+                    <h6>Download save</h6>
+                    <button class="btn btn-outline-warning" onclick="saveAsik()">Save</button>
+                </div>
+                <div class="col mt-2">
+                    <button class="btn btn-outline-warning" onclick="nevimjakpojemnovat()">Export PNG</button>
+                </div>
+                <div class="col mt-2">
+                    <button class="btn btn-outline-warning" onclick="openFilters()">Filters</button>
+                </div>
+                <div class="col mt-2">
+                    <button class="btn btn-outline-warning" onclick="addText()">Add text</button>
+                </div>
+                <div class="col mt-5">
+                    <h6>Load save</h6>
+                    <input class="form-control form-control-sm" type="file" id="filos">
+                </div>
+                <div class="col mt-2">
+                    <h6>Load Image</h6>
+                    <input class="form-control form-control-sm" type="file" id="obrazkos">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -43,42 +79,42 @@
             <div class="boxik">
                 <div class="filter-control">
                     <label for="brightness">Brightness</label>
-                    <input type="range" id="brightness" min="0" max="1" step="0.1" value="100" onchange="brightness()">
+                    <input class="form-range mx-auto" type="range" id="brightness" min="0" max="1" step="0.1" value="100" onchange="brightness()">
                 </div>
 
                 <div class="filter-control">
                     <label for="contrast">Contrast</label>
-                    <input type="range" id="contrast" min="0" max="300" step="10" value="50" onchange="contrast()">
+                    <input class="form-range mx-auto" type="range" id="contrast" min="0" max="300" step="10" value="50" onchange="contrast()">
                 </div>
 
                 <div class="filter-control">
                     <label for="grayscale">Grayscale</label>
-                    <input type="range" id="grayscale" min="0" max="100" step="10" value="0" onchange="grayscale()">
+                    <input class="form-range mx-auto" type="range" id="grayscale" min="0" max="100" step="10" value="0" onchange="grayscale()">
                 </div>
 
                 <div class="filter-control">
                     <label for="huerotate">Hue Rotate</label>
-                    <input type="range" id="huerotate" min="0" max="360" step="10" value="0" onchange="huerotate()">
+                    <input class="form-range mx-auto" type="range" id="huerotate" min="0" max="360" step="10" value="0" onchange="huerotate()">
                 </div>
 
                 <div class="filter-control">
                     <label for="invert">Invert</label>
-                    <input type="range" id="invert" min="0" max="100" step="10" value="0" onchange="invert()">
+                    <input class="form-range mx-auto" type="range" id="invert" min="0" max="100" step="10" value="0" onchange="invert()">
                 </div>
 
                 <div class="filter-control">
                     <label for="opacity">Opacity</label>
-                    <input type="range" id="opacity" min="0" max="100" step="10" value="100" onchange="opacity()">
+                    <input class="form-range mx-auto" type="range" id="opacity" min="0" max="100" step="10" value="100" onchange="opacity()">
                 </div>
 
                 <div class="filter-control">
                     <label for="saturate">Saturate</label>
-                    <input type="range" id="saturate" min="0" max="100" step="10" value="100" onchange="saturate()">
+                    <input class="form-range mx-auto" type="range" id="saturate" min="0" max="100" step="10" value="100" onchange="saturate()">
                 </div>
 
                 <div class="filter-control">
                     <label for="sepia">Sepia</label>
-                    <input type="range" id="sepia" min="0" max="100" step="10" value="0" onchange="sepia()">
+                    <input class="form-range mx-auto" type="range" id="sepia" min="0" max="100" step="10" value="0" onchange="sepia()">
                 </div>
             </div>
         </div>
@@ -103,57 +139,69 @@
         </div>
 
         <div class="div5">
-            <h1>JSPaint</h1>
+            <h1 class="display-7 fw-bold mx-auto mt-4">JSPaint</h1>
 
-            <label for="rangeInput">Brush size</label>
-            <input type="range" id="rangeInput" step="10"><br>
-
-            <label for="colorInput">Brush color</label>
-
-            <div class="tata">
-                <div class="dite3"><input type="color" id="colorInput"></div>
-            </div><br>
-
-            <div class="toolBox">
-                <div class="item">
-                    <label for="checkGrid">Grid</label>
-                    <input type="checkbox" id="checkGrid" onclick="showGrid()"><br>
-                </div>
-                <div class="item">
-                    <label for="checkAlight">Alight</label>
-                    <input type="checkbox" id="checkAlight"><br>
-                </div>
-                <div class="item">
-                    <label for="drawLines">Lines</label>
-                    <input type="checkbox" id="drawLines" onchange="drawLines()"><br>
-                </div>
-            </div><br>
-            <label for="backgroundColor">Background color</label>
-            <input type="color" id="backgroundColor" value="#FFFFFF">
-
-            <button class="clear" onclick="clearCanvas()">Clear canvas</button>
-            <button class="clear" onclick="moreTools()"
-                style="background-color: transparent; color: #ffdc09; border: 1px solid #ffdc09;">More tools</button>
-
-            <div class="multiplayer">
-
-                <h2>Multiplayer</h2>
-                <p id="name">Your name:</p>
-                <p id="userID">Your ID:</p>
-                <p id="room">Your room:</p>
-
-                <input id="joinRoom" type="text" placeholder="Enter user ID for joining their room">
+            <div class="container mx-auto">
+                <label for="rangeInput">Brush size</label>
+                <input class="form-range mx-auto" type="range" id="rangeInput" step="10"><br>
             </div>
 
-            <h3>Global chat</h3>
-            <input id="typeMessage" type="text" placeholder="Type your message here" style="width: 98%;">
-            <div class="chat">
-                <ul id="ul">
-                </ul>
+            <div class="container mx-auto">
+                <label for="colorInput">Brush color</label>
+                <input type="color" id="colorInput">
+            </div>
+
+            <div class="container text-center mb-2 mt-2">
+                <div class="row">
+                    <div class="col">
+                        <label for="checkGrid">Grid</label>
+                        <input class="form-check-input" type="checkbox" id="checkGrid" onclick="showGrid()">
+                    </div>
+                    <div class="col">
+                        <label for="checkAlight">Alight</label>
+                        <input class="form-check-input" type="checkbox" id="checkAlight">
+                    </div>
+                    <div class="col">
+                        <label for="drawLines">Lines</label>
+                        <input class="form-check-input" type="checkbox" id="drawLines" onchange="drawLines()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mx-auto">
+                <label for="backgroundColor">Background color</label>
+                <input type="color" id="backgroundColor" value="#FFFFFF">
+            </div>
+
+            <div class="container m-1 mb-2 mx-auto">
+                <div class="btn-group" style="width: 100%;" role="group" aria-label="Basic example">
+                    <button class="btn btn-outline-warning" onclick="clearCanvas()">Clear canvas</button>
+                    <button class="btn btn-warning" onclick="moreTools()">More tools</button>
+                </div>
+            </div>
+
+            <div class="container mx-auto">
+                <h2 class="display-10 fw-bold text-center">Multiplayer</h2>
+                <p class="fs-6 m-0" id="name">Your name:</p>
+                <p class="fs-6 m-0" id="userID">Your ID:</p>
+                <p class="fs-6 mb-1" id="room">Your room:</p>
+            </div>
+
+            <div class="container mx-auto">
+                <input class="form-control form-control-sm m-1" id="joinRoom" type="text" placeholder="room111">
+                <input class="form-control form-control-sm m-1" id="typeMessage" type="text" placeholder="Message...">
+                <div class="chat m-1" style="width: 100%;">
+                    <ul id="ul">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
+    <!--Bootstrap Bundle with Popper-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="modules/script.js"></script>
 </body>
 

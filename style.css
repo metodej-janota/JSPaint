@@ -1,5 +1,4 @@
 body {
-    font-family: 'Karla', sans-serif;
     background-color: #252525;
     color: white;
     overflow-x: hidden;
@@ -10,9 +9,6 @@ span {
     color: #ffdc09;
 }
 
-b {
-    color: red;
-}
 
 #canvas {
     background-color: white;
@@ -64,17 +60,6 @@ b {
     z-index: 100;
 }
 
-.toolBox {
-    display: flex;
-    line-height: normal;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.item {
-    flex-direction: row;
-}
-
 h1 {
     color: #ffdc09;
 }
@@ -103,7 +88,8 @@ h3 {
 }
 
 .div5 {
-    border-radius: 20px;
+    height: 100vh;
+    padding-right: 5px;
 }
 
 .dite3 {
@@ -114,40 +100,12 @@ h3 {
 
 input[type=color] {
     width: 100%;
-    height: 100px;
+    height: 50px;
     border: none;
 }
 
-#backgroundColor {
 
-    height: 30px;
-}
 
-input[type=range] {
-    accent-color: #ffdc09
-}
-
-input[type=checkbox] {
-    accent-color: #ffdc09
-}
-
-#joinRoom {
-    width: 99%;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button {
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    background-color: #ffdc09;
-    font-weight: 400;
-    color: black;
-    margin-bottom: 10px;
-}
 
 .cudlikos {
     width: 45%;
@@ -171,7 +129,7 @@ h3 {
 }
 
 .chat ul {
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgb(230, 230, 230);
     height: 145px;
     color: #252525;
@@ -186,7 +144,7 @@ h3 {
 
 .moreTools {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 30%;
     display: none;
     z-index: 100000;
@@ -202,12 +160,13 @@ h3 {
     display: none;
     z-index: 100000;
     display: flex;
+    width: 400px;
     flex-direction: column;
 }
 
 .boxik {
     background-color: rgba(0, 0, 0, 0.498);
-    border-radius: 10px;
+    border-radius: 5px;
     backdrop-filter: invert(70%);
     padding: 20px;
 }
@@ -215,7 +174,7 @@ h3 {
 .layers {
     margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.498);
-    border-radius: 10px;
+    border-radius: 5px;
     backdrop-filter: invert(70%);
     padding: 20px;
 }
@@ -230,18 +189,6 @@ h3 {
 
 idk {
     width: 100%;
-}
-
-input[type=file]::file-selector-button {
-    margin-right: 20px;
-    border: none;
-    border: 1px solid #ffdc09;
-    background: transparent;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    transition: .2s ease-in-out;
 }
 
 
