@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+    <title>JSPaint</title>
+</head>
+
+<body>
+
+    <div class="moreTools" id="moreTools">
+        <div class="boxik">
+            <input type="checkbox" onclick="earser()">Earser</input>
+            <input type="checkbox" id="rainbow" onclick="rainbow()">Rainbow color</input><br><br>
+            <label for="widthInput">width:</label>
+            <input type="number" id="widthInput"><br>
+            <label for="heightInput">height:</label>
+            <input type="number" id="heightInput"><br>
+            <button onclick="changeCanvasSize()" style="margin-top: 5px;">Change canvas resolution</button><br><br>
+            <button onclick="saveAsik()">Save</button>
+            <h4 style="text-align: center;">Load Save</h4>
+            <input type="file" id="filos"><br>
+            <h4 style="text-align: center;">Load Image</h4>
+            <input type="file" id="obrazkos"><br><br><br>
+            <button onclick="nevimjakpojemnovat()">Export PNG</button><br><br>
+            <button onclick="openFilters()">Filters</button><br>
+            <button onclick="addText()">Add text</button>
+        </div>
+    </div>
+
+    <div class="moreTools">
+        <div class="filtry" id="filtry">
+            <div class="boxik">
+                <div class="filter-control">
+                    <label for="brightness">Brightness</label>
+                    <input type="range" id="brightness" min="0" max="1" step="0.1" value="100" onchange="brightness()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="contrast">Contrast</label>
+                    <input type="range" id="contrast" min="0" max="300" step="10" value="50" onchange="contrast()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="grayscale">Grayscale</label>
+                    <input type="range" id="grayscale" min="0" max="100" step="10" value="0" onchange="grayscale()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="huerotate">Hue Rotate</label>
+                    <input type="range" id="huerotate" min="0" max="360" step="10" value="0" onchange="huerotate()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="invert">Invert</label>
+                    <input type="range" id="invert" min="0" max="100" step="10" value="0" onchange="invert()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="opacity">Opacity</label>
+                    <input type="range" id="opacity" min="0" max="100" step="10" value="100" onchange="opacity()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="saturate">Saturate</label>
+                    <input type="range" id="saturate" min="0" max="100" step="10" value="100" onchange="saturate()">
+                </div>
+
+                <div class="filter-control">
+                    <label for="sepia">Sepia</label>
+                    <input type="range" id="sepia" min="0" max="100" step="10" value="0" onchange="sepia()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parent">
+        <div class="div1">
+            <canvas id="canvas" height="790px" width="1100px" onmousedown="display(event)"></canvas>
+        </div>
+
+        <div class="div2">
+            <canvas id="canvasGRID" height="790px" width="1100px" onclick="display(event)"></canvas>
+        </div>
+
+        <div class="div3">
+            <canvas id="canvasHOVER" height="790px" width="1100px" onclick="display(event)"
+                onmousemove="mouseMove()"></canvas>
+        </div>
+
+        <div class="div4">
+            <canvas id="canvasPREW" height="790px" width="1100px"></canvas>
+        </div>
+
+        <div class="div5">
+            <h1>JSPaint</h1>
+
+            <label for="rangeInput">Brush size</label>
+            <input type="range" id="rangeInput" step="10"><br>
+
+            <label for="colorInput">Brush color</label>
+
+            <div class="tata">
+                <div class="dite3"><input type="color" id="colorInput"></div>
+            </div><br>
+
+            <div class="toolBox">
+                <div class="item">
+                    <label for="checkGrid">Grid</label>
+                    <input type="checkbox" id="checkGrid" onclick="showGrid()"><br>
+                </div>
+                <div class="item">
+                    <label for="checkAlight">Alight</label>
+                    <input type="checkbox" id="checkAlight"><br>
+                </div>
+                <div class="item">
+                    <label for="drawLines">Lines</label>
+                    <input type="checkbox" id="drawLines" onchange="drawLines()"><br>
+                </div>
+            </div><br>
+            <label for="backgroundColor">Background color</label>
+            <input type="color" id="backgroundColor" value="#FFFFFF">
+
+            <button class="clear" onclick="clearCanvas()">Clear canvas</button>
+            <button class="clear" onclick="moreTools()"
+                style="background-color: transparent; color: #ffdc09; border: 1px solid #ffdc09;">More tools</button>
+
+            <div class="multiplayer">
+
+                <h2>Multiplayer</h2>
+                <p id="name">Your name:</p>
+                <p id="userID">Your ID:</p>
+                <p id="room">Your room:</p>
+
+                <input id="joinRoom" type="text" placeholder="Enter user ID for joining their room">
+            </div>
+
+            <h3>Global chat</h3>
+            <input id="typeMessage" type="text" placeholder="Type your message here" style="width: 98%;">
+            <div class="chat">
+                <ul id="ul">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="modules/script.js"></script>
+</body>
+
+</html>
